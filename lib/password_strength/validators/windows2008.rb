@@ -10,7 +10,7 @@ module PasswordStrength
     #
     class Windows2008 < PasswordStrength::Base
       def test
-        return invalid! if password.size < 6
+        return invalid! if password.size < PasswordStrength.minimum_password_size
 
         variety = 0
         variety += 1 if password =~ /[A-Z]/

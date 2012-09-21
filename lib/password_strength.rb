@@ -30,10 +30,17 @@ module PasswordStrength
     strength
   end
 
+  mattr_accessor :minimum_password_size
+  @@minimum_password_size = 6
+
   class << self
     # You can disable PasswordStrength without having to change a single line of code. This is
     # specially great on development environment.
     attr_accessor :enabled
+
+    def setup
+        yield self
+    end
   end
 
   # Enable verification by default.
